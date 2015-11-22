@@ -7,6 +7,11 @@
 </head>
 <body ng-controller="MainCtrl as mainCtrl">
 <h1>Angular JS Services</h1>
+  <div ng-repeat="note in mainCtrl.notes">
+    <div><span ng-bind="note.message"></span></div>
+    <div> created <span ng-bind="note.created"></span></div>
+  </div>
+
   <button ng-click="mainCtrl.open('first')">First</button>
   <button ng-click="mainCtrl.open('second')">Second</button>
   <div ng-switch on="mainCtrl.tab">

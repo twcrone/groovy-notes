@@ -1,11 +1,18 @@
 angular.module('notesApp', [])
-  .controller('MainCtrl', [function() {
-    var self = this;
-    self.tab = 'first';
-    self.open = function(tab) {
-      console.log(tab);
-      self.tab = tab;
-    };
+    .controller('MainCtrl', ['$http', function($http) {
+        var self = this;
+        self.notes = [];
+
+        $http.get('/api/notes').then(function(resp) {
+            self.notes = resp.data;
+        }, function(errResp) {
+            console.error('Error while fetching notes');
+        });
+
+        self.tab = 'first';
+        self.open = function(tab) {
+            self.tab = tab;
+        };
   }])
 
   .controller('SubCtrl', [function() {
