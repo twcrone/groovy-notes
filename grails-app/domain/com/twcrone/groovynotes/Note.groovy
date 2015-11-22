@@ -7,5 +7,6 @@ class Note {
     Date sent
 
     static constraints = {
+      sent nullable: true
     }
 }
