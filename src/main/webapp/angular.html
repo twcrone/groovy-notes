@@ -40,7 +40,7 @@
 
         <form name="addForm"
               ng-submit="ctrl.add()">
-          <input type="text" placeholder="Message" ng-model="mainCtrl.newTodo.message" required>
+          <input type="text" placeholder="Message" ng-model="ctrl.newNote.message" required>
           <input type="submit" value="Add" ng-disabled="addForm.$invalid">
         </form>
       </div>

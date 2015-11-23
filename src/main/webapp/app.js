@@ -27,9 +27,9 @@ angular.module('notesApp', [])
 
         self.add = function () {
             console.log('Add...')
-            $http.post('/api/notes', {message: 'Blah'})
+            $http.post('/api/notes', {message: self.newNote.message})
                 .then(self.fetchNotes).then(function (resp) {
-                self.newTodo = {};
+                self.newNote = {};
             });
         };
     }]);
