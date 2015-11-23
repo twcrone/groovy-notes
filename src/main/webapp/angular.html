@@ -11,12 +11,12 @@
 </head>
 <body ng-controller="MainCtrl as mainCtrl">
 <h1>Groovy Notes</h1>
-  <button ng-click="mainCtrl.open('list')">List</button>
-  <button ng-click="mainCtrl.open('new')">New</button>
   <div ng-switch on="mainCtrl.tab">
 
     <div ng-switch-when="list">
       <div ng-controller="SubCtrl as ctrl">
+        <button class="btn btn-primary" ng-click="mainCtrl.open('new')">New</button>
+        <button class="btn btn-default" disabled>List</button>
         <h3>List Notes</h3>
         <table>
           <tr>
@@ -29,11 +29,12 @@
             <td><span ng-bind="note.created"></span></td>
             <td><span ng-bind="note.sent"></span></td>
         </table>
-
       </div>
     </div>
 
     <div ng-switch-when="new">
+      <button class="btn btn-default" disabled>New</button>
+      <button class="btn btn-primary" ng-click="mainCtrl.open('list')">List</button>
       <div ng-controller="SubCtrl as ctrl">
         <h3>New Note</h3>
 
