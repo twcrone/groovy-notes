@@ -31,11 +31,13 @@
           <h3>List Notes</h3>
           <table class="table table-bordered">
             <tr>
+              <th>ID</th>
               <th>Message</th>
               <th>Created</th>
               <th>Sent</th>
             </tr>
             <tr ng-repeat="note in mainCtrl.notes">
+              <td><span ng-bind="note.id"></span></td>
               <td><span ng-bind="note.message"></span></td>
               <td><span ng-bind="note.created | date : 'MMM d, yyyy h:mm a'"></span></td>
               <td><span ng-bind="note.sent | date : 'MMM d, yyyy h:mm a'"></span></td>

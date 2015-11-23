@@ -6,8 +6,8 @@ class NoteRestController {
 
     def index() {
         println "List..."
-        render Note.list().collect() {
-            [message: it.message, created: it.created, sent: it.sent]
+        render Note.list().collect() { note ->
+            [id: note.id, message : note.message, created: note.created, sent: note.sent]
         } as JSON
     }
 
