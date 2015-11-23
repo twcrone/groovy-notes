@@ -9,7 +9,7 @@ angular.module('notesApp', [])
             console.error('Error while fetching notes');
         });
 
-        self.tab = 'first';
+        self.tab = 'list';
         self.open = function(tab) {
             self.tab = tab;
         };

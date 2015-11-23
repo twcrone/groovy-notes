@@ -10,32 +10,32 @@
   <script src="app.js"></script>
 </head>
 <body ng-controller="MainCtrl as mainCtrl">
-<h1>Angular JS Services</h1>
-  <table>
-    <tr>
-      <th>Message</th>
-      <th>Created</th>
-      <th>Sent</th>
-    </tr>
-    <tr ng-repeat="note in mainCtrl.notes">
-      <td><span ng-bind="note.message"></span></td>
-      <td><span ng-bind="note.created"></span></td>
-      <td><span ng-bind="note.sent"></span></td>
-  </table>
-
-  <button ng-click="mainCtrl.open('first')">First</button>
-  <button ng-click="mainCtrl.open('second')">Second</button>
+<h1>Groovy Notes</h1>
+  <button ng-click="mainCtrl.open('list')">List</button>
+  <button ng-click="mainCtrl.open('new')">New</button>
   <div ng-switch on="mainCtrl.tab">
 
-    <div ng-switch-when="first">
+    <div ng-switch-when="list">
       <div ng-controller="SubCtrl as ctrl">
-        <h3>First Tab</h3>
+        <h3>List Notes</h3>
+        <table>
+          <tr>
+            <th>Message</th>
+            <th>Created</th>
+            <th>Sent</th>
+          </tr>
+          <tr ng-repeat="note in mainCtrl.notes">
+            <td><span ng-bind="note.message"></span></td>
+            <td><span ng-bind="note.created"></span></td>
+            <td><span ng-bind="note.sent"></span></td>
+        </table>
+
       </div>
     </div>
 
-    <div ng-switch-when="second">
+    <div ng-switch-when="new">
       <div ng-controller="SubCtrl as ctrl">
-        <h3>Second Tab</h3>
+        <h3>New Note</h3>
       </div>
     </div>
   </div>
