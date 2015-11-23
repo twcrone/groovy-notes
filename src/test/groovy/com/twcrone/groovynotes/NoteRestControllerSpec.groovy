@@ -17,7 +17,7 @@ class NoteRestControllerSpec extends Specification {
 
     void "list endpoint returns all notes"() {
         when:
-        controller.list()
+        controller.index()
 
         then:
         response.json.size() == 1
