@@ -7,10 +7,17 @@
 </head>
 <body ng-controller="MainCtrl as mainCtrl">
 <h1>Angular JS Services</h1>
-  <div ng-repeat="note in mainCtrl.notes">
-    <div><span ng-bind="note.message"></span></div>
-    <div> created <span ng-bind="note.created"></span></div>
-  </div>
+  <table>
+    <tr>
+      <th>Message</th>
+      <th>Created</th>
+      <th>Sent</th>
+    </tr>
+    <tr ng-repeat="note in mainCtrl.notes">
+      <td><span ng-bind="note.message"></span></td>
+      <td><span ng-bind="note.created"></span></td>
+      <td><span ng-bind="note.sent"></span></td>
+  </table>
 
   <button ng-click="mainCtrl.open('first')">First</button>
   <button ng-click="mainCtrl.open('second')">Second</button>
