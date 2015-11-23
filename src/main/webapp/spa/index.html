@@ -37,8 +37,8 @@
             </tr>
             <tr ng-repeat="note in mainCtrl.notes">
               <td><span ng-bind="note.message"></span></td>
-              <td><span ng-bind="note.created"></span></td>
-              <td><span ng-bind="note.sent"></span></td>
+              <td><span ng-bind="note.created | date : 'MMM d, yyyy h:mm a'"></span></td>
+              <td><span ng-bind="note.sent | date : 'MMM d, yyyy h:mm a'"></span></td>
           </table>
         </div>
       </div>
