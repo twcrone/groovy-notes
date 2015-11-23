@@ -1,31 +1,35 @@
 angular.module('notesApp', [])
-    .controller('MainCtrl', ['$http', function($http) {
+    .controller('MainCtrl', ['$http', function ($http) {
         var self = this;
         self.notes = [];
 
-        $http.get('/api/notes').then(function(resp) {
-            self.notes = resp.data;
-        }, function(errResp) {
-            console.error('Error while fetching notes');
-        });
+        self.fetchNotes = function() {
+            $http.get('/api/notes').then(function (resp) {
+                self.notes = resp.data;
+            }, function (errResp) {
+                console.error('Error while fetching notes');
+            });
+        }
 
+        self.fetchNotes();
         self.tab = 'list';
-        self.open = function(tab) {
+        self.open = function (tab) {
+            if(tab == 'list') {
+                self.fetchNotes();
+            }
             self.tab = tab;
         };
-  }])
+    }])
 
-  .controller('SubCtrl', [function() {
-    var self = this;
-    self.list = [
-      {id: 1, label: 'Item 1'},
-      {id: 2, label: 'Item 2'}
-    ];
-    
-    self.add = function() {
-      self.list.push({
-        id: self.list.length + 1,
-        label: 'Item ' + self.list.length
-      });
-    };
-  }]);
+    .controller('SubCtrl', ['$http', function ($http) {
+        var self = this;
+        self.newNote = {};
+
+        self.add = function () {
+            console.log('Add...')
+            $http.post('/api/notes', {message: 'Blah'})
+                .then(self.fetchNotes).then(function (resp) {
+                self.newTodo = {};
+            });
+        };
+    }]);

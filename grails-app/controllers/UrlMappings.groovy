@@ -8,7 +8,7 @@ class UrlMappings {
             }
         }
         
-        "/api/notes"(controller: "noteRest", action: "list")
+        "/api/notes"(resources:'noteRest', includes:['index', 'save'])
 
         "/"(view:"/index")
         "500"(view:'/error')

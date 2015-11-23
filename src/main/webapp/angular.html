@@ -36,6 +36,12 @@
     <div ng-switch-when="new">
       <div ng-controller="SubCtrl as ctrl">
         <h3>New Note</h3>
+
+        <form name="addForm"
+              ng-submit="ctrl.add()">
+          <input type="text" placeholder="Message" ng-model="mainCtrl.newTodo.message" required>
+          <input type="submit" value="Add" ng-disabled="addForm.$invalid">
+        </form>
       </div>
     </div>
   </div>
