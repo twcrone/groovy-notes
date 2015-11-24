@@ -29,6 +29,8 @@ environments {
             println "Host=$uri.path"
             username = uri.userInfo.split(":")[0]
             password = uri.userInfo.split(":")[1]
+            println "Username=$username"
+            println "Password=$password"
         }
     }
 }
