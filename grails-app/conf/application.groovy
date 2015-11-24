@@ -21,16 +21,15 @@ environments {
         dataSource {
             dbCreate = "update"
             driverClassName = "org.postgresql.Driver"
-            println "DATABASE_URL=${System.env.DATABASE_URL}"
-            uri = new URI(System.env.DATABASE_URL?:"postgres://test:test@localhost/test")
+            if(!System.env.DATABASE_URL) {
+                def msg = "DATABASE_URL not specified in environment.  " +
+                        "Make sure you added the Heroku Postgres addon."
+                throw new RuntimeException(msg)
+            }
+            uri = new URI(System.env.DATABASE_URL)
             url = "jdbc:postgresql://" + uri.host + ":" + uri.port + uri.path
-            println "Host=$uri.host"
-            println "Port=$uri.port"
-            println "Host=$uri.path"
             username = uri.userInfo.split(":")[0]
             password = uri.userInfo.split(":")[1]
-            println "Username=$username"
-            println "Password=$password"
         }
     }
 }
