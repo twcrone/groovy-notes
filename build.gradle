@@ -80,7 +80,7 @@ task wrapper(type: Wrapper) {
 }
 
 task stage() {
-    dependsOn clean, build
+    dependsOn build
 }
 tasks.stage.doLast() {
     delete fileTree(dir: "build/distributions")
