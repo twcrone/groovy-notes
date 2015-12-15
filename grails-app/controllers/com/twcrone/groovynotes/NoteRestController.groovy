@@ -5,7 +5,6 @@ import grails.converters.*
 class NoteRestController {
 
     def index() {
-        println "List..."
         render Note.list().collect() { note ->
             [id: note.id, message : note.message, created: note.created, sent: note.sent]
         } as JSON
