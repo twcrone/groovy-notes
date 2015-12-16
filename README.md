@@ -1,6 +1,8 @@
 Groovy Notes
 ============
 
+[![Build Status](https://travis-ci.org/twcrone/groovy-notes.svg?branch=master)](https://travis-ci.org/twcrone/groovy-notes)
+
 Ever had short bursts of 'lovey' feelings for your significant other only to
 annoy her by 'over' loving her with compliments and sappy comments?
 
