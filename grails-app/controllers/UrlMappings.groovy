@@ -10,7 +10,7 @@ class UrlMappings {
         
         "/api/notes"(resources:'noteRest', includes:['index', 'save'])
 
-        "/"(view:"/index")
+        "/"(redirect: "/index.html")
         "500"(view:'/error')
         "404"(view:'/notFound')
     }
