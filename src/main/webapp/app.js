@@ -1,36 +1,30 @@
-angular.module('notesApp', [
-        'groovynotes.note-service'])
+(function (angular) {
+    "use strict";
 
-    .constant('URL', '/api/notes')
+    angular.module('notesApp', [
+            'groovynotes.note-service'])
 
-    .controller('MainCtrl', ['noteService', function (noteService) {
-        var self = this;
-        self.notes = [];
+        .constant('URL', '/api/notes')
 
-        self.fetchNotes = function () {
-            noteService.findAll().then(function (notes) {
-                self.notes = notes;
-            });
-        };
+        .controller('MainCtrl', ['noteService', function (noteService) {
+            var self = this;
+            self.notes = [];
 
-        self.fetchNotes();
-        self.tab = 'list';
-        self.open = function (tab) {
-            if (tab == 'list') {
-                self.fetchNotes();
-            }
-            self.tab = tab;
-        };
-    }])
+            self.fetchNotes = function () {
+                noteService.findAll().then(function (notes) {
+                    self.notes = notes;
+                });
+            };
 
-    .controller('SubCtrl', ['noteService', function (noteService) {
-        var self = this;
-        self.newNote = {};
+            self.fetchNotes();
+            self.tab = 'list';
+            self.open = function (tab) {
+                if (tab == 'list') {
+                    self.fetchNotes();
+                }
+                self.tab = tab;
+            };
+        }]);
 
-        self.add = function () {
-            console.log('Adding...', self.newNote);
-            noteService.save(self.newNote.message).then(function () {
-                self.newNote = {};
-            });
-        };
-    }]);
+})(window.angular);
+

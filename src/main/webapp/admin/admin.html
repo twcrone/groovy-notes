@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+  <title>Notes App</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <link href="main.css" rel="stylesheet" >
+
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+  <script src="app.js"></script>
+  <script src="lib/note-service.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container" >
+    <div class="navbar-header" >
+      <a class="navbar-brand"
+         href="/spa/index.html" >Groovy Notes
+      </a >
+    </div >
+  </div >
+</nav >
+<div class="container main-content" ng-controller="MainCtrl as mainCtrl">
+  <div ng-switch on="mainCtrl.tab">
+
+    <div ng-switch-when="list">
+      <div ng-controller="SubCtrl as ctrl">
+        <button class="btn btn-primary" ng-click="mainCtrl.open('new')">New</button>
+        <button class="btn btn-default" disabled>List</button>
+        <h3>List Notes</h3>
+        <table class="table table-bordered">
+          <tr>
+            <th>ID</th>
+            <th>Message</th>
+            <th>Created</th>
+            <th>Sent</th>
+          </tr>
+          <tr ng-repeat="note in mainCtrl.notes">
+            <td><span ng-bind="note.id"></span></td>
+            <td><span ng-bind="note.message"></span></td>
+            <td><span ng-bind="note.created | date : 'MMM d, yyyy h:mm a'"></span></td>
+            <td><span ng-bind="note.sent | date : 'MMM d, yyyy h:mm a'"></span></td>
+        </table>
+      </div>
+    </div>
+
+    <div ng-switch-when="new">
+      <button class="btn btn-default" disabled>New</button>
+      <button class="btn btn-primary" ng-click="mainCtrl.open('list')">List</button>
+      <div ng-controller="SubCtrl as ctrl">
+        <h3>New Note</h3>
+
+        <form name="addForm"
+              ng-submit="ctrl.add()">
+          <input type="text" placeholder="Message" ng-model="ctrl.newNote.message" required>
+          <input type="submit" value="Add" ng-disabled="addForm.$invalid">
+        </form>
+      </div>
+    </div>
+    <hr />
+    <pre>{{ mainCtrl | json }}</pre>
+
+  </div>
+</div>
+</body>
+</html>
