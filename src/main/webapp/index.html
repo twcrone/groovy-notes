@@ -30,7 +30,7 @@
 <div class="container main-content" ng-controller="MainCtrl as mainCtrl">
     <div ng-switch on="mainCtrl.tab">
 
-        <b>Filter</b>: <input type="text" placeholder="Add filter text here" size="50"/>
+        <b>Filter</b>: <input ng-model="filterText" type="text" placeholder="Add filter text here" size="50"/>
         <hr>
         <table class="table table-bordered">
             <tr>
@@ -39,7 +39,7 @@
                 <th>Created</th>
                 <th>Sent</th>
             </tr>
-            <tr ng-repeat="note in mainCtrl.notes">
+            <tr ng-repeat="note in mainCtrl.notes | filter:filterText">
                 <td><span ng-bind="note.id"></span></td>
                 <td><span ng-bind="note.message"></span></td>
                 <td><span ng-bind="note.created | date : 'MMM d, yyyy h:mm a'"></span></td>
