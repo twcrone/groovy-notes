@@ -1,34 +1,35 @@
-angular.module('notesApp', [])
-    .controller('MainCtrl', ['$http', function ($http) {
+angular.module('notesApp', [
+        'groovynotes.note-service'])
+
+    .constant('URL', '/api/notes')
+
+    .controller('MainCtrl', ['noteService', function (noteService) {
         var self = this;
         self.notes = [];
 
-        self.fetchNotes = function() {
-            $http.get('/api/notes').then(function (resp) {
-                self.notes = resp.data;
-            }, function (errResp) {
-                console.error('Error while fetching notes');
+        self.fetchNotes = function () {
+            noteService.findAll().then(function (notes) {
+                self.notes = notes;
             });
-        }
+        };
 
         self.fetchNotes();
         self.tab = 'list';
         self.open = function (tab) {
-            if(tab == 'list') {
+            if (tab == 'list') {
                 self.fetchNotes();
             }
             self.tab = tab;
         };
     }])
 
-    .controller('SubCtrl', ['$http', function ($http) {
+    .controller('SubCtrl', ['noteService', function (noteService) {
         var self = this;
         self.newNote = {};
 
         self.add = function () {
-            console.log('Add...')
-            $http.post('/api/notes', {message: self.newNote.message})
-                .then(self.fetchNotes).then(function (resp) {
+            console.log('Adding...', self.newNote);
+            noteService.save(self.newNote.message).then(function () {
                 self.newNote = {};
             });
         };
