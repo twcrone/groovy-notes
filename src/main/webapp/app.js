@@ -2,7 +2,8 @@
     "use strict";
 
     angular.module('notesApp', [
-            'groovynotes.note-service'])
+            'groovynotes.note-service',
+            'groovynotes.notetable'])
 
         .constant('URL', '/api/notes')
 

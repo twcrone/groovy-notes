@@ -16,6 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
     <script src="app.js"></script>
     <script src="lib/note-service.js"></script>
+    <script src="lib/notetable.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -28,26 +29,7 @@
     </div>
 </nav>
 <div class="container main-content" ng-controller="MainCtrl as mainCtrl">
-    <div ng-switch on="mainCtrl.tab">
-
-        <b>Filter</b>: <input ng-model="filterText" type="text" placeholder="Add filter text here" size="50"/>
-        <hr>
-        <table class="table table-bordered">
-            <tr>
-                <th>ID</th>
-                <th>Message</th>
-                <th>Created</th>
-                <th>Sent</th>
-            </tr>
-            <tr ng-repeat="note in mainCtrl.notes | filter:filterText">
-                <td><span ng-bind="note.id"></span></td>
-                <td><span ng-bind="note.message"></span></td>
-                <td><span ng-bind="note.created | date : 'MMM d, yyyy h:mm a'"></span></td>
-                <td><span ng-bind="note.sent | date : 'MMM d, yyyy h:mm a'"></span></td>
-            </tr>
-        </table>
-
-    </div>
+    <notetable notes="mainCtrl.notes"></notetable>
 </div>
 </body>
 </html>
