@@ -18,13 +18,6 @@
             };
 
             self.fetchNotes();
-            self.tab = 'list';
-            self.open = function (tab) {
-                if (tab == 'list') {
-                    self.fetchNotes();
-                }
-                self.tab = tab;
-            };
         }]);
 
 })(window.angular);

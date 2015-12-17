@@ -12,7 +12,7 @@
         </tr>
         <tr ng-repeat="note in notes | filter:{message:filterText}">
             <td><span ng-bind="note.id"></span></td>
-            <td><span ng-bind="note.message"></span></td>
+            <td><i><span ng-bind="note.message"></span></i></td>
             <td><span ng-bind="note.created | date : 'MMM d, yyyy h:mm a'"></span></td>
             <td><span ng-bind="note.sent | date : 'MMM d, yyyy h:mm a'"></span></td>
         </tr>

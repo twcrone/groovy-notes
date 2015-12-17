@@ -10,6 +10,6 @@
                     notes: '='
                 }
             };
-        })
+        });
 
 })(window.angular);
