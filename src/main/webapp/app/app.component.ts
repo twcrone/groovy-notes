@@ -3,9 +3,11 @@ import {Component} from 'angular2/core';
 import {Hero} from './hero';
 import {HeroDetailComponent} from './hero-detail.component';
 import {HeroService} from './hero.service';
+import {Http, HTTP_PROVIDERS} from 'angular2/http'
 
 @Component({
     selector: 'my-app',
+    viewProviders: [HTTP_PROVIDERS],
     templateUrl: 'app/app.component.html',
     styles:[`
   .heroes {list-style-type: none; margin-left: 1em; padding: 0; width: 10em;}
