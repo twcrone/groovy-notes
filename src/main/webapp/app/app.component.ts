@@ -33,20 +33,22 @@ export class AppComponent implements OnInit {
     public title = 'Tour of Heroes';
     public selectedHero: Hero;
     
-    constructor(private _heroService: HeroService, http: Http) { 
-       console.log('Getting notes...');
-       var observable = http.get('http://groovy-notes.herokuapp.com/api/notes');
-       observable.subscribe(resp => this.heroes = resp.json());
+    http: Http;
+    
+    constructor(http: Http) {
+        this.http = http; 
     }
     
     onSelect(hero: Hero) { this.selectedHero = hero; }
     
     getHeroes() {
-        this._heroService.getHeroes().then(heroes => this.heroes = heroes);
+       console.log('Getting notes...');
+       var observable = this.http.get('http://groovy-notes.herokuapp.com/api/notes');
+       observable.subscribe(resp => this.heroes = resp.json());
     }
     
     ngOnInit() {
-    //     this.getHeroes();
+         this.getHeroes();
     }
 }
 

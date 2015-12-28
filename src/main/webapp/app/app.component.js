@@ -26,21 +26,19 @@ System.register(['angular2/core', './hero-detail.component', './hero.service', '
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent(_heroService, http) {
-                    var _this = this;
-                    this._heroService = _heroService;
+                function AppComponent(http) {
                     this.title = 'Tour of Heroes';
-                    console.log('Getting notes...');
-                    var observable = http.get('http://groovy-notes.herokuapp.com/api/notes');
-                    observable.subscribe(function (resp) { return _this.heroes = resp.json(); });
+                    this.http = http;
                 }
                 AppComponent.prototype.onSelect = function (hero) { this.selectedHero = hero; };
                 AppComponent.prototype.getHeroes = function () {
                     var _this = this;
-                    this._heroService.getHeroes().then(function (heroes) { return _this.heroes = heroes; });
+                    console.log('Getting notes...');
+                    var observable = this.http.get('http://groovy-notes.herokuapp.com/api/notes');
+                    observable.subscribe(function (resp) { return _this.heroes = resp.json(); });
                 };
                 AppComponent.prototype.ngOnInit = function () {
-                    //     this.getHeroes();
+                    this.getHeroes();
                 };
                 AppComponent = __decorate([
                     core_1.Component({
@@ -51,7 +49,7 @@ System.register(['angular2/core', './hero-detail.component', './hero.service', '
                         directives: [hero_detail_component_1.HeroDetailComponent],
                         providers: [hero_service_1.HeroService]
                     }), 
-                    __metadata('design:paramtypes', [hero_service_1.HeroService, http_1.Http])
+                    __metadata('design:paramtypes', [http_1.Http])
                 ], AppComponent);
                 return AppComponent;
             })();

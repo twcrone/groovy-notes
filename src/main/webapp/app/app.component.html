@@ -3,7 +3,8 @@
     <li *ngFor="#hero of heroes" 
         [class.selected]="hero === selectedHero"
         (click)="onSelect(hero)">
-        <span class="badge">{{hero.id}}</span> {{hero.name}}
+        <span class="badge">{{hero.id}}</span> 
+        <span>{{hero.message}}</span>
     </li>
 </ul>
 <my-hero-detail [hero]="selectedHero"></my-hero-detail>
