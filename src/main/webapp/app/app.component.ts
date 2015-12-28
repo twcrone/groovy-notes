@@ -42,8 +42,8 @@ export class AppComponent implements OnInit {
     onSelect(hero: Hero) { this.selectedHero = hero; }
     
     getHeroes() {
-       console.log('Getting notes...');
-       var observable = this.http.get('http://groovy-notes.herokuapp.com/api/notes');
+       console.log('Getting notes dude...');
+       var observable = this.http.get('/api/notes');
        observable.subscribe(resp => this.heroes = resp.json());
     }
     

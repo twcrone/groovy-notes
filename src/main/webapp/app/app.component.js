@@ -33,8 +33,8 @@ System.register(['angular2/core', './hero-detail.component', './hero.service', '
                 AppComponent.prototype.onSelect = function (hero) { this.selectedHero = hero; };
                 AppComponent.prototype.getHeroes = function () {
                     var _this = this;
-                    console.log('Getting notes...');
-                    var observable = this.http.get('http://groovy-notes.herokuapp.com/api/notes');
+                    console.log('Getting notes dude...');
+                    var observable = this.http.get('/api/notes');
                     observable.subscribe(function (resp) { return _this.heroes = resp.json(); });
                 };
                 AppComponent.prototype.ngOnInit = function () {
