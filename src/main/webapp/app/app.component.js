@@ -1,4 +1,4 @@
-System.register(['angular2/core', './hero-detail.component', './hero.service', 'angular2/http'], function(exports_1) {
+System.register(['angular2/core', './hero-detail.component', './hero.service', 'angular2/http', './message-filter.pipe'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', './hero-detail.component', './hero.service', '
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, hero_detail_component_1, hero_service_1, http_1;
+    var core_1, hero_detail_component_1, hero_service_1, http_1, message_filter_pipe_1;
     var AppComponent;
     return {
         setters:[
@@ -23,14 +23,15 @@ System.register(['angular2/core', './hero-detail.component', './hero.service', '
             },
             function (http_1_1) {
                 http_1 = http_1_1;
+            },
+            function (message_filter_pipe_1_1) {
+                message_filter_pipe_1 = message_filter_pipe_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent(http) {
-                    this.title = 'Tour of Heroes';
                     this.http = http;
                 }
-                AppComponent.prototype.onSelect = function (hero) { this.selectedHero = hero; };
                 AppComponent.prototype.getHeroes = function () {
                     var _this = this;
                     console.log('Getting notes dude...');
@@ -46,7 +47,8 @@ System.register(['angular2/core', './hero-detail.component', './hero.service', '
                         viewProviders: [http_1.HTTP_PROVIDERS],
                         templateUrl: 'app/app.component.html',
                         directives: [hero_detail_component_1.HeroDetailComponent],
-                        providers: [hero_service_1.HeroService]
+                        providers: [hero_service_1.HeroService],
+                        pipes: [message_filter_pipe_1.MessageFilterPipe]
                     }), 
                     __metadata('design:paramtypes', [http_1.Http])
                 ], AppComponent);

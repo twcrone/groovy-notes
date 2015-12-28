@@ -2,7 +2,7 @@
     <h2>Note {{hero.id}} details!</h2>
     <div>
         <label>message: </label>
-        {{hero.message}}
+        {{hero.message | messageFilter}}
         <!--<input [(ngModel)]="hero.name" placeholder="name"/>-->
     </div>
     <div><label>created: </label>{{hero.created}}</div>

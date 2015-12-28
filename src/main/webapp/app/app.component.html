@@ -1,10 +1,21 @@
-<h2>My Heroes</h2>
-<ul class="heroes">
-    <li *ngFor="#hero of heroes" 
-        [class.selected]="hero === selectedHero"
-        (click)="onSelect(hero)">
-        <span class="badge">{{hero.id}}</span> 
-        <span>{{hero.message}}</span>
-    </li>
-</ul>
-<my-hero-detail [hero]="selectedHero"></my-hero-detail>
+<div>
+ <!--
+    <b>Filter</b>: <input [(ngModel)]="messageFilter" type="text" placeholder="Add filter text here"
+                          size="50"/>
+    <hr>
+-->
+    <table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>Message</th>
+            <th>Created</th>
+            <th>Sent</th>
+        </tr>
+        <tr *ngFor="#note of heroes" >
+            <td>{{note.id}}</td>
+            <td>{{note.message | messageFilter}}</td>
+            <td>{{note.created}}</td>
+            <td>{{note.sent}}</td>
+        </tr>
+    </table>
+</div>
