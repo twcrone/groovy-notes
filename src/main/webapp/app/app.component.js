@@ -30,6 +30,7 @@ System.register(['angular2/core', './hero-detail.component', './hero.service', '
         execute: function() {
             AppComponent = (function () {
                 function AppComponent(http) {
+                    this.heroes = [];
                     this.http = http;
                 }
                 AppComponent.prototype.getHeroes = function () {

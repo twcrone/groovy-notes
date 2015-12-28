@@ -18,12 +18,28 @@ System.register(['angular2/core'], function(exports_1) {
         execute: function() {
             MessageFilterPipe = (function () {
                 function MessageFilterPipe() {
+                    this.filteredNotes = [];
                 }
-                MessageFilterPipe.prototype.transform = function (value, args) {
-                    return value.toUpperCase();
+                MessageFilterPipe.prototype.transform = function (heroes, _a) {
+                    var _this = this;
+                    var text = _a[0];
+                    this.filteredNotes.length = 0;
+                    if (text == null) {
+                        text = '';
+                    }
+                    if (heroes != null) {
+                        var tmp = heroes.filter(function (note) { return note.message.indexOf(text) !== -1; });
+                        tmp.forEach(function (element) {
+                            _this.filteredNotes.push(element);
+                        });
+                    }
+                    return this.filteredNotes;
                 };
                 MessageFilterPipe = __decorate([
-                    core_1.Pipe({ name: 'messageFilter' }), 
+                    core_1.Pipe({
+                        name: 'messageFilter',
+                        pure: false
+                    }), 
                     __metadata('design:paramtypes', [])
                 ], MessageFilterPipe);
                 return MessageFilterPipe;

@@ -15,7 +15,7 @@ import {MessageFilterPipe} from './message-filter.pipe'
     pipes: [MessageFilterPipe]
 })
 export class AppComponent implements OnInit { 
-    public heroes: Hero[];
+    public heroes: Hero[] = [];
     
     http: Http;
     
