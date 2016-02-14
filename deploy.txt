@@ -1,0 +1,7 @@
+scp groovy-notes-0.1.war root@0.0.0:/some/where
+
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+
+java -Dgrails.env=prod -Dserver.port=8080 -Dserver.host=0.0.0.0 -jar groovy-notes-0.1.war
