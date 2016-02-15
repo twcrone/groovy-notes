@@ -1,6 +1,13 @@
 Groovy Notes
 ============
 
+*** Not currently active ***
+
+Letting my Ruby/Rails version stand on its own for now and focusing on server
+driven version of Space Mines.
+
+[Space Mines 2.0](https://github.com/twcrone/spacemines)
+
 [![Build Status](https://travis-ci.org/twcrone/groovy-notes.svg?branch=master)](https://travis-ci.org/twcrone/groovy-notes)
 
 Ever had short bursts of 'lovey' feelings for your significant other only to
